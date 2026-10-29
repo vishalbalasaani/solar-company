@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Solar Company - Powering a Greener Future</title>
+  <meta name="description" content="The Solar Company: Sustainable clean energy solutions, solar installations, and environmental change." />
+  
+  <!-- Modern Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+  <!-- Fixed Fullscreen Canvas Background for Frame Scroll Animation -->
+  <canvas id="canvas"></canvas>
+  <div class="canvas-vignette"></div>
+
+  <!-- Main Webpage Content Layer -->
+  <div id="app" class="page-layer">
+    
+    <!-- 1. Header / Navbar -->
+    <header class="navbar-wrapper">
+      <div class="navbar-container">
+        <!-- Brand Logo Zone -->
+        <a href="#home" class="brand-logo" id="logo-btn">
+          <div class="brand-icon-box">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4" fill="currentColor" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+          </div>
+          <span class="brand-name">The Solar Company</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="nav-links">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#about" class="nav-link" data-nav="about">About</a>
+
+          <!-- Pages Dropdown -->
+          <div class="dropdown-wrapper">
+            <button class="dropdown-btn" data-dropdown="pages">
+              <span>Pages</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="dropdown-menu" id="dropdown-pages">
+              <button class="dropdown-item" data-nav="overview">Company Overview</button>
+              <button class="dropdown-item" data-nav="technology">Clean Tech Grid</button>
+              <button class="dropdown-item" data-nav="impact">Impact Metrics</button>
+              <button class="dropdown-item" data-nav="faq">Solar FAQs</button>
+            </div>
+          </div>
+
+          <!-- Projects Dropdown -->
+          <div class="dropdown-wrapper">
+            <button class="dropdown-btn" data-dropdown="projects">
+              <span>Projects</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="dropdown-menu" id="dropdown-projects">
+              <button class="dropdown-item" data-modal="directory" data-filter="solar">Utility Solar Farms (500+ MW)</button>
+              <button class="dropdown-item" data-modal="directory" data-filter="commercial">Commercial Rooftop Installations</button>
+              <button class="dropdown-item" data-modal="directory" data-filter="wind">Wind Power Systems</button>
+              <button class="dropdown-item" data-modal="directory" data-filter="all">Battery Storage Hubs</button>
+            </div>
+          </div>
+
+          <!-- Blog Dropdown -->
+          <div class="dropdown-wrapper">
+            <button class="dropdown-btn" data-dropdown="blog">
+              <span>Blog</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="dropdown-menu" id="dropdown-blog">
+              <button class="dropdown-item" data-nav="blog-trends">2026 Solar Outlook</button>
+              <button class="dropdown-item" data-nav="blog-rebates">Clean Energy Credits</button>
+              <button class="dropdown-item" data-nav="blog-grid">Next-Gen Inverters</button>
+            </div>
+          </div>
+
+          <a href="#contact" class="nav-link" data-modal="quote">Contact</a>
+        </nav>
+
+        <!-- CTA & Mobile Trigger -->
+        <div class="navbar-actions">
+          <button class="btn-primary" data-modal="quote">Get Started</button>
+          <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+            <svg class="menu-open-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="menu-close-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div class="mobile-drawer hidden" id="mobile-drawer">
+        <a href="#home" class="mobile-nav-link">Home</a>
+        <button class="mobile-nav-link" data-nav="about">About</button>
+        <button class="mobile-nav-link" data-modal="directory">Projects & Portfolios</button>
+        <button class="mobile-nav-link" data-nav="blog">Insights & Blog</button>
+        <button class="mobile-nav-link" data-modal="quote">Contact Us</button>
+        <div class="mobile-drawer-footer">
+          <button class="btn-primary full-width" data-modal="quote">Get Started</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- 2. Hero Section -->
+      <section class="hero-section" id="home">
+        <div class="section-container">
+          <div class="hero-content">
+            
+            <div class="hero-header-block">
+              <h1 class="hero-headline">
+                Powering a Greener <br class="sm-break">
+                Future With Innovation
+              </h1>
+
+              <p class="hero-description">
+                Harnessing the infinite energy of the sun to deliver next-generation clean power. From utility-scale solar arrays to smart commercial installations, we empower communities to achieve true energy independence.
+              </p>
+
+              <div class="hero-cta-wrapper">
+                <button class="btn-primary btn-large" data-modal="quote">
+                  <span>Get Free Quote</span>
+                  <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </button>
+              </div>
+
+              <!-- Floating Highlight Cards -->
+              <div class="hero-floating-cards">
+                <!-- Card 1: Our Solar Projects & Success Stories -->
+                <div class="floating-card glass-card" data-modal="directory">
+                  <div class="card-thumb">
+                    <img src="assets/extracted/solar_project_thumb.png" alt="Solar Installation" loading="eager" onerror="this.style.display='none'">
+                  </div>
+                  <div class="card-text">
+                    <h3 class="card-title">Our Solar Projects & Success Stories</h3>
+                    <p class="card-sub">Utility solar installations delivering over 500+ MW capacity</p>
+                  </div>
+                </div>
+
+                <!-- Card 2: 12M+ Customer -->
+                <div class="floating-card customer-card glass-card">
+                  <div class="avatar-stack">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&crop=faces" alt="Customer" class="avatar-img" referrerpolicy="no-referrer">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=faces" alt="Customer" class="avatar-img" referrerpolicy="no-referrer">
+                    <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=64&h=64&fit=crop&crop=faces" alt="Customer" class="avatar-img" referrerpolicy="no-referrer">
+                  </div>
+                  <div class="customer-stat">12M+</div>
+                  <div class="customer-label">Customer</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Trusted by Leading Energy Innovators -->
+      <section class="partners-section">
+        <div class="section-container">
+          <p class="partners-heading">Trusted by Leading Energy Innovators</p>
+          
+          <div class="partners-row">
+            <!-- 1. KAGUJE -->
+            <div class="partner-item" data-partner="KAGUJE">
+              <div class="kaguje-icon"><div class="kaguje-dot"></div></div>
+              <span class="partner-name font-mono">KAGUJE</span>
+            </div>
+
+            <!-- 2. Floor & Door -->
+            <div class="partner-item" data-partner="Floor & Door">
+              <span class="partner-name font-serif">Floor &amp; Door</span>
+            </div>
+
+            <!-- 3. coreg.zip -->
+            <div class="partner-item" data-partner="coreg.zip">
+              <svg class="partner-svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+              </svg>
+              <span class="partner-name">coreg.zip</span>
+            </div>
+
+            <!-- 4. Taggore -->
+            <div class="partner-item" data-partner="Taggore">
+              <svg class="partner-svg stroke-only" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7"/>
+              </svg>
+              <span class="partner-name">Taggore</span>
+            </div>
+
+            <!-- 5. JAZZER -->
+            <div class="partner-item" data-partner="JAZZER">
+              <svg class="partner-svg stroke-only" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+              <span class="partner-name font-bold">JAZZER</span>
+            </div>
+
+            <!-- 6. adaptive -->
+            <div class="partner-item" data-partner="adaptive">
+              <svg class="partner-svg stroke-only" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <rect x="3" y="8" width="18" height="8" rx="4"/>
+                <circle cx="9" cy="12" r="1.5" fill="currentColor"/>
+              </svg>
+              <span class="partner-name lowercase">adaptive</span>
+            </div>
+
+            <!-- 7. Elegant -->
+            <div class="partner-item" data-partner="Elegant">
+              <svg class="partner-svg stroke-only" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
+                <line x1="16" y1="8" x2="2" y2="22"/>
+                <line x1="17.5" y1="15" x2="9" y2="15"/>
+              </svg>
+              <span class="partner-name font-serif italic">Elegant</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Sustainability-Driven Mission Statement (Floating over video) -->
+      <section class="mission-section" id="about">
+        <div class="section-container">
+          <div class="mission-pill-wrapper">
+            <div class="mission-pill">
+              <span class="sparkle-symbol">✦</span>
+              <span>Serving Innovators Since 2010</span>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <h2 class="mission-headline">
+              Generating clean energy from the sun. Cutting utility costs, reducing emissions, and powering a self-sustaining tomorrow.
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Minimal Clean Narrative & High-Impact Stats (Background 100% Unhindered) -->
+      <section class="story-section">
+        <div class="section-container">
+          <div class="story-content">
+            
+            <div class="story-header">
+              <span class="story-badge">PRECISION ENGINEERING</span>
+              <h2 class="story-title">Built for maximum energy yield. Engineered to endure.</h2>
+              <p class="story-desc">
+                High-efficiency bi-facial solar cells designed to capture direct sunlight and ground reflections alike — converting every ray into reliable, clean electricity for your home or enterprise.
+              </p>
+            </div>
+
+            <!-- Transparent Minimalist Stat Highlights (Zero bulky opaque cards) -->
+            <div class="story-stats-grid">
+              <div class="story-stat-col">
+                <div class="stat-val-huge">98%</div>
+                <div class="stat-title">Client Satisfaction</div>
+                <p class="stat-sub">Highest-rated solar installations with proven long-term performance</p>
+              </div>
+
+              <div class="story-stat-col">
+                <div class="stat-val-huge">500+ MW</div>
+                <div class="stat-title">Clean Grid Capacity</div>
+                <p class="stat-sub">Powering hundreds of thousands of residential and commercial facilities</p>
+              </div>
+
+              <div class="story-stat-col">
+                <div class="stat-val-huge">25 Yrs</div>
+                <div class="stat-title">Performance Warranty</div>
+                <p class="stat-sub">Tier-1 hardware backed by guaranteed comprehensive linear coverage</p>
+              </div>
+            </div>
+
+            <div class="story-actions">
+              <button class="btn-primary btn-large" data-modal="quote">
+                <span>Get Free Quote</span>
+                <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+              <button class="btn-secondary btn-large" data-modal="directory">
+                <span>View Operating Arrays</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow-icon"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Floating Bottom Bar: Visit Site Bar -->
+      <section class="visit-section">
+        <div class="section-container">
+          <div class="visit-site-bar glass-card">
+            
+            <!-- Left Trigger: Visit Site -->
+            <div class="visit-trigger" data-modal="directory">
+              <div class="visit-circle-icon">
+                <svg class="visit-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </div>
+              <span class="visit-text">Visit site</span>
+            </div>
+
+            <!-- Middle Metrics -->
+            <div class="metrics-grid">
+              <div class="metric-item" data-metric="Happy Customers">
+                <span class="metric-label">Happy Customers</span>
+                <span class="metric-value">1000+</span>
+              </div>
+              <div class="metric-item" data-metric="Solar Energy Installed">
+                <span class="metric-label">Solar Energy Installed</span>
+                <span class="metric-value">5MW+</span>
+              </div>
+              <div class="metric-item" data-metric="Industry Experience">
+                <span class="metric-label">Industry Experience</span>
+                <span class="metric-value">15+</span>
+              </div>
+              <div class="metric-item" data-metric="On Electricity Bills">
+                <span class="metric-label">On Electricity Bills</span>
+                <span class="metric-value">90%</span>
+              </div>
+            </div>
+
+            <!-- Right: Rotating Seal Certification Icon -->
+            <div class="seal-wrapper" id="seal-btn" title="Verified Clean Energy Certification" data-modal="directory">
+              <svg class="seal-svg" id="seal-svg" viewBox="0 0 100 100" fill="none">
+                <path d="M 50 10 A 40 40 0 0 1 90 50 A 40 40 0 0 1 65 85" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 50 90 A 40 40 0 0 1 10 50 A 40 40 0 0 1 35 15" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 60 78 L 65 85 L 56 89" fill="currentColor"/>
+                <path d="M 40 22 L 35 15 L 44 11" fill="currentColor"/>
+                <circle cx="50" cy="50" r="18" stroke="currentColor" stroke-width="6"/>
+                <line x1="63" y1="63" x2="82" y2="82" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 72 20 L 74 26 L 80 28 L 74 30 L 72 36 L 70 30 L 64 28 L 70 26 Z" fill="currentColor"/>
+              </svg>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer Space -->
+    <footer class="page-footer">
+      <div class="section-container">
+        <p class="copyright-text">© 2026 The Solar Company. All rights reserved. Clean energy for the future.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Interactive Modal 1: Free Solar Quote Calculator -->
+  <div class="modal-backdrop hidden" id="quote-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" data-close-modal aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div id="quote-form-view">
+        <div class="modal-pill-tag">
+          <span class="fast-estimate-badge">Fast Estimate</span>
+          <span class="tag-sub">No obligation</span>
+        </div>
+
+        <h2 class="modal-title">Get Your Free Solar Quote</h2>
+        <p class="modal-subtitle">Calculate your system size, estimated savings, and get customized engineering specs.</p>
+
+        <!-- Live Calculator Box -->
+        <div class="calculator-box">
+          <div class="calc-row">
+            <span class="calc-label">Monthly Electric Bill</span>
+            <span class="calc-val" id="bill-display">$220/mo</span>
+          </div>
+          <input type="range" min="50" max="1200" step="10" value="220" class="bill-slider" id="bill-slider">
+
+          <div class="calc-metrics-row">
+            <div class="calc-stat-card">
+              <div class="stat-meta">Est. System</div>
+              <div class="stat-val" id="stat-system">10 kW</div>
+            </div>
+            <div class="calc-stat-card">
+              <div class="stat-meta">25-Yr Savings</div>
+              <div class="stat-val emerald-val" id="stat-savings">$47,520</div>
+            </div>
+            <div class="calc-stat-card">
+              <div class="stat-meta">CO₂ Offset</div>
+              <div class="stat-val blue-val" id="stat-co2">14 T/yr</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote Form -->
+        <form id="quote-form" class="quote-form">
+          <div class="form-group">
+            <label class="form-label">Property Type</label>
+            <div class="property-grid">
+              <button type="button" class="property-btn active" data-type="residential">Residential</button>
+              <button type="button" class="property-btn" data-type="commercial">Commercial</button>
+              <button type="button" class="property-btn" data-type="industrial">Industrial</button>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="quote-name">Full Name</label>
+              <input type="text" id="quote-name" required placeholder="Alex Morgan" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="quote-email">Email Address</label>
+              <input type="email" id="quote-email" required placeholder="alex@domain.com" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quote-phone">Phone Number</label>
+            <input type="tel" id="quote-phone" placeholder="(555) 019-2834" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quote-notes">Roof Type / Notes (Optional)</label>
+            <input type="text" id="quote-notes" placeholder="e.g., Flat metal, Tile roof, or Ground mount space" class="form-input">
+          </div>
+
+          <button type="submit" class="btn-primary full-width btn-large mt-3" id="quote-submit-btn">
+            Request Free Engineering Assessment
+          </button>
+
+          <div class="privacy-guarantee">
+            <svg class="shield-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Your information is protected under The Solar Company Privacy Guarantee</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- Quote Success View -->
+      <div id="quote-success-view" class="quote-success hidden">
+        <div class="success-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 class="success-title">Quote Request Received!</h3>
+        <p class="success-desc" id="success-desc">
+          Thank you. Our clean energy engineers have prepared your initial assessment.
+        </p>
+        <div class="success-card" id="success-email-box">
+          A detailed PDF proposal has been generated for your property.
+        </div>
+        <button class="btn-dark" data-close-modal>Done</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Interactive Modal 2: Site Directory & Grid -->
+  <div class="modal-backdrop hidden" id="directory-modal">
+    <div class="modal-card modal-wide">
+      <button class="modal-close-btn" data-close-modal aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-pill-tag">
+        <span class="fast-estimate-badge">Live Portfolios</span>
+        <span class="tag-sub">Verified Operational Data</span>
+      </div>
+
+      <h2 class="modal-title">The Solar Company Site Directory &amp; Grid</h2>
+      <p class="modal-subtitle">Explore operating solar arrays, commercial rooftop grids, and wind turbine installations.</p>
+
+      <!-- Category Filter Pills -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Sites</button>
+        <button class="filter-tab" data-filter="solar">Solar Utility</button>
+        <button class="filter-tab" data-filter="wind">Wind Corridors</button>
+        <button class="filter-tab" data-filter="commercial">Commercial Roofs</button>
+      </div>
+
+      <!-- Projects List -->
+      <div class="projects-list" id="projects-list">
+        <!-- Project 1 -->
+        <div class="project-card" data-category="solar">
+          <div class="project-left">
+            <div class="project-thumb">
+              <img src="assets/extracted/solar_project_thumb.png" alt="Mojave Sun Valley Array">
+            </div>
+            <div>
+              <h4 class="project-name">Mojave Sun Valley Array</h4>
+              <div class="project-meta">
+                <span class="loc-text">📍 Nevada, USA</span>
+                <span>·</span>
+                <span class="status-badge">Active · Grid Connected</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-right">
+            <div class="project-stat-box">
+              <div class="project-capacity">240 MW</div>
+              <div class="project-offset">Offset: 320k Tons/yr</div>
+            </div>
+            <button class="icon-action-btn" data-inquire="Mojave Sun Valley Array" title="Inquire about this installation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" data-category="wind">
+          <div class="project-left">
+            <div class="project-thumb">
+              <img src="assets/windmills_twilight.svg" alt="High Ridge Turbine Corridor">
+            </div>
+            <div>
+              <h4 class="project-name">High Ridge Turbine Corridor</h4>
+              <div class="project-meta">
+                <span class="loc-text">📍 Colorado, USA</span>
+                <span>·</span>
+                <span class="status-badge">Active · Peak Efficiency</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-right">
+            <div class="project-stat-box">
+              <div class="project-capacity">180 MW</div>
+              <div class="project-offset">Offset: 240k Tons/yr</div>
+            </div>
+            <button class="icon-action-btn" data-inquire="High Ridge Turbine Corridor" title="Inquire about this installation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card" data-category="commercial">
+          <div class="project-left">
+            <div class="project-thumb">
+              <img src="assets/extracted/pill_windmills.png" alt="Apex Industrial Rooftop Hub">
+            </div>
+            <div>
+              <h4 class="project-name">Apex Industrial Rooftop Hub</h4>
+              <div class="project-meta">
+                <span class="loc-text">📍 Austin, Texas</span>
+                <span>·</span>
+                <span class="status-badge">Active · Zero Outage</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-right">
+            <div class="project-stat-box">
+              <div class="project-capacity">14.5 MW</div>
+              <div class="project-offset">Offset: 18k Tons/yr</div>
+            </div>
+            <button class="icon-action-btn" data-inquire="Apex Industrial Rooftop Hub" title="Inquire about this installation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card" data-category="solar">
+          <div class="project-left">
+            <div class="project-thumb">
+              <img src="assets/extracted/solar_project_thumb.png" alt="Coastal Horizon Clean Grid">
+            </div>
+            <div>
+              <h4 class="project-name">Coastal Horizon Clean Grid</h4>
+              <div class="project-meta">
+                <span class="loc-text">📍 California, USA</span>
+                <span>·</span>
+                <span class="status-badge">Commissioned 2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-right">
+            <div class="project-stat-box">
+              <div class="project-capacity">85 MW</div>
+              <div class="project-offset">Offset: 110k Tons/yr</div>
+            </div>
+            <button class="icon-action-btn" data-inquire="Coastal Horizon Clean Grid" title="Inquire about this installation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Directory Modal Footer -->
+      <div class="modal-footer-row">
+        <span class="footer-note">Over <strong>5,000,000+ MWh</strong> verified clean power generated to date.</span>
+        <button class="btn-primary" data-modal="quote">Deploy Similar Project</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification -->
+  <div id="toast" class="toast-pill hidden">
+    <div class="toast-dot"></div>
+    <span id="toast-text"></span>
+  </div>
+
+  <script src="script.js?v=4"></script>
+</body>
+</html>
