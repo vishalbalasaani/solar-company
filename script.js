@@ -12,10 +12,9 @@
   let currentFrame = 0;
   let lastDrawnFrameIndex = -1;
 
-  // Cache-busted URL so browser NEVER serves the old watermarked cached frames
   function getFrameUrl(index) {
     const frameNumber = String(index + 1).padStart(4, '0');
-    return `frames/frame_${frameNumber}.jpg?v=clean_nowatermark`;
+    return `frames/frame_${frameNumber}.jpg`;
   }
 
   function setupCanvas() {
